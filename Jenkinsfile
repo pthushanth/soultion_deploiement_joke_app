@@ -3,7 +3,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                nodejs(nodeJSInstallationName: 'node_17') {
+                    bat 'npm install'
+                    bat 'npm run build'
+                    bat 'npm run test'
+                }
+                
+                
             }
         }
     
